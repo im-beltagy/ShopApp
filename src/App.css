@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f3f3f3;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* App ================================================================ */
+.App {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100svh;
+}
+
+/* Nav ================================================================ */
+.nav-link:hover {
+  color: var(--bs-primary) !important;
+}
+@media (max-width: 768px) {
+  .nav-link {
+    transition: padding 0.15s;
+  }
+  .nav-link:hover {
+    padding-inline-start: 1rem;
+  }
+}
+
+/* Section Title ===================================================== */
+.section-title h1 {
+  position: relative;
+  width: fit-content;
+}
+.section-title h1::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  transform: translateY(-50%);
+  inset-inline: 0;
+  height: 0.15rem;
+  border-radius: 1rem;
+  background-color: var(--bs-dark);
+}
+
+/* Spinner ========================================================== */
+.spinner-container {
+  display: grid;
+  place-items: center;
+}
+.spinner {
+  --spinner-width: min(8rem, 80vw);
+  position: relative;
+  width: var(--spinner-width);
+  aspect-ratio: 1 / 1;
+  background-image: conic-gradient(var(--bs-primary) 70%, #0000 0deg);
+  border-radius: 100%;
+  animation: spin infinite linear 1300ms;
+}
+@keyframes spin {
+  from {
+    transform: rotate(45deg);
+  }
+  to {
+    transform: rotate(405deg);
+  }
+}
+.spinner::before,
+.spinner::after {
+  content: "";
+  width: 1rem;
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  top: 0;
+  left: calc(50% - 0.5rem);
+  border-radius: 100%;
+  background-color: var(--bs-primary);
+}
+.spinner::after {
+  transform-origin: 50% calc(var(--spinner-width) / 2);
+  transform: rotate(252deg);
+}
+.spinner__bg {
+  position: absolute;
+  inset: 1rem;
+  background-color: #f3f3f3;
+  border-radius: 100%;
+}
